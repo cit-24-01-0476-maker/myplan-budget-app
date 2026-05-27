@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyPlan — Premium Apple Glassmorphic Budget Tracker</title>
+  <!-- SEO Best Practices Meta -->
+  <meta name="description" content="An ultra-premium Apple-style Glassmorphism budget planning application tailored for Sri Lankan Rupees (Rs.). Track expenses and manage monthly limits with zero-state precision.">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"Plus Jakarta Sans"', '"Segoe UI"', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Embedded Ultra-Realistic Glassmorphism & Animated Mesh Styles -->
+  <style>
+    /* Import Premium Sleek Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --blur-radius: 25px;
+      --glass-bg: rgba(255, 255, 255, 0.07);
+      --glass-bg-hover: rgba(255, 255, 255, 0.12);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Plus Jakarta Sans", "Segoe UI", sans-serif;
+      color: rgba(255, 255, 255, 0.95);
+      min-height: 100vh;
+      margin: 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Vibrant, Dynamic Animated Mesh Gradient Background */
+    .bg-mesh-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      overflow: hidden;
+      background: #090c15; /* Absolute deep slate iOS dark theme base */
+    }
+
+    .mesh-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.38;
+      mix-blend-mode: screen;
+      animation: floatOrb 24s infinite alternate ease-in-out;
+      pointer-events: none;
+    }
+
+    /* Orb 1: Finance Emerald Emerald */
+    .orb-emerald {
+      top: -10%;
+      left: -10%;
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.45) 0%, transparent 75%);
+      animation-duration: 20s;
+    }
+
+    /* Orb 2: Royal Blue Blue */
+    .orb-blue {
+      bottom: -15%;
+      right: -10%;
+      width: 65vw;
+      height: 65vw;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 75%);
+      animation-duration: 28s;
+    }
+
+    /* Orb 3: Accent Magenta */
+    .orb-magenta {
+      top: 35%;
+      left: 45%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.22) 0%, transparent 75%);
+      animation-duration: 22s;
+    }
+
+    @keyframes floatOrb {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(6%, 10%) scale(1.12);
+      }
+      100% {
+        transform: translate(-4%, -6%) scale(0.92);
+      }
+    }
+
+    /* Frosted Glass Scrollbar to stay uniform */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 99px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    /* Premium Glassmorphism Container */
+    .glass-panel {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--blur-radius));
+      -webkit-backdrop-filter: blur(var(--blur-radius));
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      border-radius: 24px;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Apple-style interactive hover elevation scale */
+    .glass-panel-hover:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 45px 0 rgba(0, 0, 0, 0.35);
+    }
+
+    /* Apple Frosted Glass inputs */
+    .glass-input {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      color: rgba(255, 255, 255, 0.95);
+      transition: all 0.25s ease;
+      min-height: 46px; /* iOS standard touch height requirement */
+    }
+    .glass-input::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+    .glass-input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+    }
+
+    select.glass-input option {
+      background-color: #0d111d; /* Matches device dropdown menus */
+      color: #fff;
+    }
+
+    /* Glass action CTA buttons */
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 14px;
+      font-weight: 600;
+      min-height: 46px; /* Touch target minimum height */
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+    .btn-active-depress:active {
+      transform: scale(0.96);
+    }
+
+    /* Badge specific transparency classes */
+    .glass-badge {
+      font-weight: 600;
+      font-size: 10px;
+      padding: 3.5px 9px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+    }
+    .glass-badge-food { 
+      background-color: rgba(249, 115, 22, 0.1); 
+      color: #ffa465; 
+      border-color: rgba(249, 115, 22, 0.18); 
+    }
+    .glass-badge-transport { 
+      background-color: rgba(59, 130, 246, 0.1); 
+      color: #84b1ff; 
+      border-color: rgba(59, 130, 246, 0.18); 
+    }
+    .glass-badge-bills { 
+      background-color: rgba(239, 68, 68, 0.1); 
+      color: #ff8c8c; 
+      border-color: rgba(239, 68, 68, 0.18); 
+    }
+    .glass-badge-entertainment { 
+      background-color: rgba(168, 85, 247, 0.1); 
+      color: #cca4ff; 
+      border-color: rgba(168, 85, 247, 0.18); 
+    }
+    .glass-badge-other { 
+      background-color: rgba(255, 255, 255, 0.05); 
+      color: #e5e7eb; 
+      border-color: rgba(255, 255, 255, 0.1); 
+    }
+
+    /* Keyframe Animations */
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDownExit {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+    }
+
+    .animate-slide-up {
+      animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .animate-slide-down-exit {
+      animation: slideDownExit 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .progress-bar-fill {
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
+    }
+
+    /* Glass text glow states to bypass dark overlay contrasts */
+    .glow-remaining-healthy {
+      text-shadow: 0 0 14px rgba(52, 211, 153, 0.22);
+    }
+    .glow-remaining-over {
+      text-shadow: 0 0 14px rgba(248, 113, 113, 0.22);
+    }
+  </style>
+</head>
+<body class="selection:bg-white/20 selection:text-white flex flex-col pb-8">
+
+  <!-- Dynamic Animated CSS Mesh Gradient Elements -->
+  <div class="bg-mesh-container" aria-hidden="true">
+    <div class="mesh-orb orb-emerald"></div>
+    <div class="mesh-orb orb-blue"></div>
+    <div class="mesh-orb orb-magenta"></div>
+  </div>
+
+  <!-- Header Section -->
+  <header class="w-full z-40 border-b border-white/5 bg-black/10 backdrop-blur-md sticky top-0 transition-colors duration-300">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <!-- branding -->
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-indigo-500 flex items-center justify-center shadow-lg shadow-emerald-500/10 shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold tracking-tight text-white/95 leading-none">MyPlan</h1>
+          <p class="text-[9px] font-semibold text-white/30 uppercase tracking-widest mt-1">Frosted Glass Planner</p>
+        </div>
+      </div>
+
+      <!-- Quick Reset CTA -->
+      <button id="reset-app-btn" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-rose-400/80 hover:text-rose-400 bg-white/5 hover:bg-white/10 border border-white/5 transition-all btn-active-depress">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg>
+        <span>Reset Data</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 md:py-8 space-y-6">
+
+    <!-- Top Block: Set Budget & Progress Indicators -->
+    <section class="glass-panel p-6 space-y-5 animate-slide-up">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        
+        <!-- Budget Configurator -->
+        <div id="budget-setup" class="space-y-2 flex-grow max-w-md">
+          <label for="budget-input" class="text-[11px] font-bold text-white/40 uppercase tracking-wider">Set Monthly Budget Limit</label>
+          <div class="relative flex items-center">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <span class="text-white/40 text-sm font-bold">Rs.</span>
+            </div>
+            <!-- Large input suited for iOS touch -->
+            <input type="number" id="budget-input" min="0" step="1" placeholder="0.00" class="block w-full pl-12 pr-28 py-3.5 glass-input text-base font-bold input-focus-glow" />
+            
+            <div class="absolute inset-y-0 right-0 pr-1.5 flex items-center">
+              <button id="update-budget-btn" class="px-3.5 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs rounded-xl shadow-lg shadow-emerald-500/15 transition-all btn-active-depress">
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Exhaustion progress indicator -->
+        <div class="flex-1 md:max-w-md w-full space-y-2">
+          <div class="flex items-center justify-between text-[11px] font-bold text-white/40 uppercase tracking-wider">
+            <span>Budget Exhaustion</span>
+            <span id="budget-progress-percent">0% Spent</span>
+          </div>
+          <!-- Transparent Glass shell progress bar container -->
+          <div class="w-full h-3 bg-white/5 rounded-full overflow-hidden border border-white/5">
+            <div id="budget-progress-bar" class="h-full w-0 progress-bar-fill rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(52,211,153,0.35)]"></div>
+          </div>
+          <p id="budget-helper-text" class="text-[11px] text-white/30 italic">Update your monthly budget limit to begin financial metrics.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dashboard Summary Grid (PC Columns, Mobile Stacked) -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      
+      <!-- Total Budget Card -->
+      <div class="glass-panel glass-panel-hover p-6 flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-white/5 text-white/60 flex items-center justify-center border border-white/5 shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <div class="min-w-0">
+          <p class="text-[10px] font-bold text-white/40 uppercase tracking-wider leading-none">Total Budget</p>
+          <p id="card-total-budget" class="text-xl font-extrabold text-white/95 mt-1.5 truncate">Rs. 0.00</p>
+        </div>
+      </div>
+
+      <!-- Total Spent Card -->
+      <div class="glass-panel glass-panel-hover p-6 flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center border border-rose-500/10 shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </div>
+        <div class="min-w-0">
+          <p class="text-[10px] font-bold text-white/40 uppercase tracking-wider leading-none">Total Spent</p>
+          <p id="card-total-spent" class="text-xl font-extrabold text-white/95 mt-1.5 truncate">Rs. 0.00</p>
+        </div>
+      </div>
+
+      <!-- Remaining Balance Card -->
+      <div class="glass-panel glass-panel-hover p-6 flex items-center space-x-4">
+        <div id="remaining-balance-icon-container" class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/10 shrink-0 transition-colors duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+          </svg>
+        </div>
+        <div class="min-w-0 flex-grow relative">
+          <div class="flex items-center justify-between">
+            <p class="text-[10px] font-bold text-white/40 uppercase tracking-wider leading-none">Remaining Balance</p>
+            <span id="over-budget-dot" class="w-2.5 h-2.5 rounded-full bg-rose-500 hidden animate-ping" title="Over Budget!"></span>
+          </div>
+          <!-- Emerald if healthy, Rose if over budget, clean visual contrast glow -->
+          <p id="card-remaining-balance" class="text-xl font-extrabold text-emerald-400 mt-1.5 truncate glow-remaining-healthy transition-colors duration-300">Rs. 0.00</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Bottom Section: Split Columns on Desktop (lg:col-span-5 and lg:col-span-7) -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      
+      <!-- 1. Daily Expense Tracker Form (5 Columns) -->
+      <div class="lg:col-span-5 glass-panel p-6 space-y-5">
+        <div>
+          <h3 class="text-base font-bold text-white/95">Add Expense</h3>
+          <p class="text-xs text-white/30 mt-1">Keep track of your daily spending effortlessly.</p>
+        </div>
+
+        <form id="expense-form" class="space-y-4" novalidate>
+          <!-- Note / Name -->
+          <div class="space-y-1.5">
+            <label for="expense-note" class="text-[10px] font-bold text-white/40 uppercase tracking-wider">Expense Name / Note</label>
+            <input type="text" id="expense-note" placeholder="e.g., Keells Groceries" required class="block w-full px-4 py-3 glass-input text-xs" />
+            <span id="note-error" class="hidden text-[9px] font-bold text-rose-400 mt-1">Please enter a name for the expense.</span>
+          </div>
+
+          <!-- Grid layout Amount & Category dropdown -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Amount -->
+            <div class="space-y-1.5">
+              <label for="expense-amount" class="text-[10px] font-bold text-white/40 uppercase tracking-wider">Amount (Rs.)</label>
+              <input type="number" id="expense-amount" placeholder="0.00" step="0.01" min="0.01" required class="block w-full px-4 py-3 glass-input text-xs" />
+              <span id="amount-error" class="hidden text-[9px] font-bold text-rose-400 mt-1">Please enter a valid amount.</span>
+            </div>
+
+            <!-- Category -->
+            <div class="space-y-1.5">
+              <label for="expense-category" class="text-[10px] font-bold text-white/40 uppercase tracking-wider">Category</label>
+              <select id="expense-category" required class="block w-full px-3 py-3 glass-input text-xs cursor-pointer">
+                <option value="" disabled selected>Select Category</option>
+                <option value="Food">Food 🍔</option>
+                <option value="Transport">Transport 🚗</option>
+                <option value="Bills">Bills ⚡</option>
+                <option value="Entertainment">Entertainment 🎬</option>
+                <option value="Other">Other 📦</option>
+              </select>
+              <span id="category-error" class="hidden text-[9px] font-bold text-rose-400 mt-1">Please choose a category.</span>
+            </div>
+          </div>
+
+          <!-- Add Expense Button -->
+          <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs rounded-xl shadow-lg shadow-emerald-500/10 transition-all btn-glass btn-active-depress flex items-center justify-center space-x-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+            <span>Add Expense</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- 2. Recent Transactions History (7 Columns) -->
+      <div class="lg:col-span-7 glass-panel p-6 space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h3 class="text-base font-bold text-white/95">Recent Transactions</h3>
+            <p class="text-xs text-white/30 mt-1">Overview of your history.</p>
+          </div>
+
+          <!-- Category Pill Filters -->
+          <div id="category-filters" class="flex flex-wrap gap-1.5">
+            <button data-filter="All" class="px-3 py-1.5 rounded-lg text-[10px] font-bold bg-white/15 text-white border border-white/10 transition-all btn-active-depress">All</button>
+            <button data-filter="Food" class="px-3 py-1.5 rounded-lg text-[10px] font-semibold bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/5 transition-all btn-active-depress">🍔 Food</button>
+            <button data-filter="Transport" class="px-3 py-1.5 rounded-lg text-[10px] font-semibold bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/5 transition-all btn-active-depress">🚗 Trans.</button>
+            <button data-filter="Bills" class="px-3 py-1.5 rounded-lg text-[10px] font-semibold bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/5 transition-all btn-active-depress">⚡ Bills</button>
+            <button data-filter="Entertainment" class="px-3 py-1.5 rounded-lg text-[10px] font-semibold bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/5 transition-all btn-active-depress">🎬 Ent.</button>
+            <button data-filter="Other" class="px-3 py-1.5 rounded-lg text-[10px] font-semibold bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/5 transition-all btn-active-depress">📦 Other</button>
+          </div>
+        </div>
+
+        <!-- History Container -->
+        <div class="relative min-h-[220px] max-h-[380px] overflow-y-auto pr-1">
+          <!-- Glass Empty State -->
+          <div id="empty-state" class="flex flex-col items-center justify-center text-center py-12 px-4 space-y-3">
+            <div class="w-12 h-12 rounded-full bg-white/5 text-white/30 flex items-center justify-center border border-white/5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-white/60">No transactions recorded</p>
+              <p class="text-[11px] text-white/30 mt-1 max-w-[240px]">Start adding expenses to visualize budget consumption.</p>
+            </div>
+          </div>
+
+          <!-- Glass Cards List (Rendered dynamically) -->
+          <div id="transactions-list" class="space-y-2.5 hidden">
+            <!-- Loaded dynamically via javascript below -->
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Mobile Helper Footer -->
+  <footer class="w-full text-center py-4 border-t border-white/5 mt-auto bg-black/10 backdrop-blur-md">
+    <p class="text-[10px] text-white/20">© 2026 MyPlan. Frosted Glassmorphism Budget System. Crafted for Sri Lanka (Rs.).</p>
+  </footer>
+
+  <!-- Embedded Premium JavaScript Logic (Zero-State & LocalStorage persistent) -->
+  <script>
+    /**
+     * MyPlan Budget Tracker - Single File Glassmorphic Edition
+     * Strict absolute-zero launch cycles & localized Rupee calculations.
+     */
+
+    // --- State Structure ---
+    let state = {
+      budget: 0.00,
+      expenses: [],
+      activeFilter: 'All'
+    };
+
+    // --- Element bindings Cache ---
+    const DOM = {
+      resetAppBtn: document.getElementById('reset-app-btn'),
+      budgetInput: document.getElementById('budget-input'),
+      updateBudgetBtn: document.getElementById('update-budget-btn'),
+      budgetProgressPercent: document.getElementById('budget-progress-percent'),
+      budgetProgressBar: document.getElementById('budget-progress-bar'),
+      budgetHelperText: document.getElementById('budget-helper-text'),
+      cardTotalBudget: document.getElementById('card-total-budget'),
+      cardTotalSpent: document.getElementById('card-total-spent'),
+      cardRemainingBalance: document.getElementById('card-remaining-balance'),
+      remainingBalanceIconContainer: document.getElementById('remaining-balance-icon-container'),
+      overBudgetDot: document.getElementById('over-budget-dot'),
+      expenseForm: document.getElementById('expense-form'),
+      expenseNote: document.getElementById('expense-note'),
+      expenseAmount: document.getElementById('expense-amount'),
+      expenseCategory: document.getElementById('expense-category'),
+      noteError: document.getElementById('note-error'),
+      amountError: document.getElementById('amount-error'),
+      categoryError: document.getElementById('category-error'),
+      categoryFilters: document.getElementById('category-filters'),
+      emptyState: document.getElementById('empty-state'),
+      transactionsList: document.getElementById('transactions-list')
+    };
+
+    // --- LKR (Rs.) Custom Formatter ---
+    const formatCurrency = (amount) => {
+      const isNegative = amount < 0;
+      const abs = Math.abs(amount);
+      const formatted = 'Rs. ' + abs.toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+      return isNegative ? `-${formatted}` : formatted;
+    };
+
+    // --- Date Formatter ---
+    const formatDate = (isoString) => {
+      const date = new Date(isoString);
+      return date.toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+    };
+
+    // --- Category Icons Mapping ---
+    const CATEGORY_ICONS = {
+      Food: '🍔',
+      Transport: '🚗',
+      Bills: '⚡',
+      Entertainment: '🎬',
+      Other: '📦'
+    };
+
+    const getCategoryIcon = (category) => CATEGORY_ICONS[category] || '💰';
+
+    // --- LocalStorage Read/Write Operations ---
+    const loadState = () => {
+      const cachedBudget = localStorage.getItem('myplan_glass_budget');
+      const cachedExpenses = localStorage.getItem('myplan_glass_expenses');
+
+      if (cachedBudget === null && cachedExpenses === null) {
+        // STRICT ABSOLUTE-ZERO START SEQUENCE
+        state.budget = 0.00;
+        state.expenses = [];
+        saveState();
+      } else {
+        state.budget = parseFloat(cachedBudget) || 0.00;
+        state.expenses = cachedExpenses ? JSON.parse(cachedExpenses) : [];
+      }
+    };
+
+    const saveState = () => {
+      localStorage.setItem('myplan_glass_budget', state.budget.toString());
+      localStorage.setItem('myplan_glass_expenses', JSON.stringify(state.expenses));
+    };
+
+    // --- UI Render orchestrator ---
+    const render = () => {
+      const totalSpent = state.expenses.reduce((sum, item) => sum + item.amount, 0);
+      const remainingBalance = state.budget - totalSpent;
+      const exhaustionPercent = state.budget > 0 ? Math.min((totalSpent / state.budget) * 100, 100) : 0;
+
+      // 1. Sync Budget configurations
+      if (document.activeElement !== DOM.budgetInput) {
+        DOM.budgetInput.value = state.budget > 0 ? state.budget.toString() : '';
+      }
+
+      // 2. Render Progress indicator bar
+      DOM.budgetProgressPercent.textContent = `${Math.round(exhaustionPercent)}% Spent`;
+      DOM.budgetProgressBar.style.width = `${exhaustionPercent}%`;
+
+      if (state.budget === 0) {
+        DOM.budgetProgressBar.className = 'h-full w-0 progress-bar-fill rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(52,211,153,0.35)]';
+        DOM.budgetHelperText.textContent = 'Enter your monthly budget to unlock tracker metrics.';
+        DOM.budgetHelperText.className = 'text-[11px] text-white/30 italic';
+      } else if (exhaustionPercent >= 100) {
+        DOM.budgetProgressBar.className = 'h-full w-0 progress-bar-fill rounded-full bg-rose-500 shadow-[0_0_10px_rgba(248,113,113,0.45)]';
+        DOM.budgetHelperText.textContent = 'Alert: Budget limits fully exhausted! Reduce spending.';
+        DOM.budgetHelperText.className = 'text-[11px] text-rose-400 font-semibold italic';
+      } else if (exhaustionPercent >= 75) {
+        DOM.budgetProgressBar.className = 'h-full w-0 progress-bar-fill rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.35)]';
+        DOM.budgetHelperText.textContent = 'Warning: Over 75% of your allocated budget has been spent.';
+        DOM.budgetHelperText.className = 'text-[11px] text-amber-400 font-medium italic';
+      } else {
+        DOM.budgetProgressBar.className = 'h-full w-0 progress-bar-fill rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(52,211,153,0.35)]';
+        DOM.budgetHelperText.textContent = 'All good! Current spending limits are perfectly healthy.';
+        DOM.budgetHelperText.className = 'text-[11px] text-emerald-400/80 italic';
+      }
+
+      // 3. Render Card Metrics (Formatted strictly as Rs. 0.00 baseline)
+      DOM.cardTotalBudget.textContent = formatCurrency(state.budget);
+      DOM.cardTotalSpent.textContent = formatCurrency(totalSpent);
+      DOM.cardRemainingBalance.textContent = formatCurrency(remainingBalance);
+
+      // Color text carefully to be highly readable on glass
+      if (remainingBalance < 0) {
+        DOM.cardRemainingBalance.className = 'text-xl font-extrabold text-rose-400 mt-1.5 truncate glow-remaining-over transition-colors duration-300';
+        DOM.remainingBalanceIconContainer.className = 'w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center border border-rose-500/10 shrink-0 transition-colors duration-300';
+        DOM.overBudgetDot.classList.remove('hidden');
+      } else {
+        DOM.cardRemainingBalance.className = 'text-xl font-extrabold text-emerald-400 mt-1.5 truncate glow-remaining-healthy transition-colors duration-300';
+        DOM.remainingBalanceIconContainer.className = 'w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/10 shrink-0 transition-colors duration-300';
+        DOM.overBudgetDot.classList.add('hidden');
+      }
+
+      // 4. Render lists with filter logic
+      const filtered = state.expenses.filter(item => {
+        if (state.activeFilter === 'All') return true;
+        return item.category.toLowerCase() === state.activeFilter.toLowerCase();
+      });
+
+      if (filtered.length === 0) {
+        DOM.emptyState.classList.remove('hidden');
+        DOM.transactionsList.classList.add('hidden');
+      } else {
+        DOM.emptyState.classList.add('hidden');
+        DOM.transactionsList.classList.remove('hidden');
+
+        // Newest transactions first
+        const sorted = [...filtered].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        DOM.transactionsList.innerHTML = sorted.map(item => {
+          const icon = getCategoryIcon(item.category);
+          const badgeClass = `glass-badge-${item.category.toLowerCase()}`;
+          
+          return `
+            <div id="expense-row-${item.id}" class="flex items-center justify-between p-3.5 bg-white/[0.02] border border-white/5 rounded-xl hover:bg-white/[0.04] transition-all duration-200 animate-slide-up">
+              <div class="flex items-center space-x-3.5 min-w-0">
+                <!-- Glass Emojis wrapper -->
+                <div class="w-9 h-9 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-base shrink-0">
+                  ${icon}
+                </div>
+                <!-- metadata -->
+                <div class="min-w-0">
+                  <p class="text-xs font-bold text-white/90 truncate">${escapeHTML(item.note)}</p>
+                  <div class="flex items-center space-x-2 mt-0.5">
+                    <span class="glass-badge ${badgeClass}">
+                      ${item.category}
+                    </span>
+                    <span class="text-[9px] text-white/30 font-medium">
+                      ${formatDate(item.date)}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Price & remove action buttons -->
+              <div class="flex items-center space-x-3.5 ml-3 shrink-0">
+                <span class="text-xs font-extrabold text-white/90">${formatCurrency(item.amount)}</span>
+                <button onclick="handleDeleteExpense('${item.id}')" class="p-2 text-white/30 hover:text-rose-400 hover:bg-white/5 border border-transparent hover:border-white/5 rounded-lg transition-all btn-active-depress" title="Delete Expense">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    };
+
+    // --- HTML escape string XSS security check ---
+    const escapeHTML = (str) => {
+      return str.replace(/[&<>'"]/g, 
+        tag => ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          "'": '&#39;',
+          '"': '&quot;'
+        }[tag] || tag)
+      );
+    };
+
+    // --- Budget management ---
+    const handleUpdateBudget = () => {
+      const val = parseFloat(DOM.budgetInput.value);
+      if (isNaN(val) || val < 0) {
+        alert('Please enter a valid monthly budget limit (Rs. 0.00 or higher).');
+        return;
+      }
+      state.budget = val;
+      saveState();
+      render();
+      DOM.budgetInput.blur();
+    };
+
+    // --- Add expense pipeline ---
+    const handleAddExpense = (e) => {
+      e.preventDefault();
+
+      const noteVal = DOM.expenseNote.value.trim();
+      const amountVal = parseFloat(DOM.expenseAmount.value);
+      const categoryVal = DOM.expenseCategory.value;
+
+      let hasError = false;
+
+      // Form validation
+      if (!noteVal) {
+        DOM.noteError.classList.remove('hidden');
+        DOM.expenseNote.classList.add('border-rose-400');
+        hasError = true;
+      } else {
+        DOM.noteError.classList.add('hidden');
+        DOM.expenseNote.classList.remove('border-rose-400');
+      }
+
+      if (isNaN(amountVal) || amountVal <= 0) {
+        DOM.amountError.classList.remove('hidden');
+        DOM.expenseAmount.classList.add('border-rose-400');
+        hasError = true;
+      } else {
+        DOM.amountError.classList.add('hidden');
+        DOM.expenseAmount.classList.remove('border-rose-400');
+      }
+
+      if (!categoryVal) {
+        DOM.categoryError.classList.remove('hidden');
+        DOM.expenseCategory.classList.add('border-rose-400');
+        hasError = true;
+      } else {
+        DOM.categoryError.classList.add('hidden');
+        DOM.expenseCategory.classList.remove('border-rose-400');
+      }
+
+      if (hasError) return;
+
+      const newExpense = {
+        id: 'exp-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9),
+        note: noteVal,
+        amount: amountVal,
+        category: categoryVal,
+        date: new Date().toISOString()
+      };
+
+      state.expenses.push(newExpense);
+      saveState();
+      render();
+
+      DOM.expenseForm.reset();
+    };
+
+    // --- Deletion keyframe transitions pipeline ---
+    window.handleDeleteExpense = (id) => {
+      const row = document.getElementById(`expense-row-${id}`);
+      if (row) {
+        row.className = row.className.replace('animate-slide-up', '');
+        row.classList.add('animate-slide-down-exit');
+
+        // wait 280ms for keyframe slideDownExit to end
+        setTimeout(() => {
+          state.expenses = state.expenses.filter(item => item.id !== id);
+          saveState();
+          render();
+        }, 280);
+      } else {
+        state.expenses = state.expenses.filter(item => item.id !== id);
+        saveState();
+        render();
+      }
+    };
+
+    // --- Filter controller ---
+    const handleFilterChange = (e) => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+
+      const target = btn.dataset.filter;
+      if (!target) return;
+
+      state.activeFilter = target;
+
+      const buttons = DOM.categoryFilters.querySelectorAll('button');
+      buttons.forEach(b => {
+        if (b.dataset.filter === target) {
+          b.className = 'px-3 py-1.5 rounded-lg text-[10px] font-bold bg-white/15 text-white border border-white/10 transition-all btn-active-depress';
+        } else {
+          b.className = 'px-3 py-1.5 rounded-lg text-[10px] font-semibold bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/5 transition-all btn-active-depress';
+        }
+      });
+
+      render();
+    };
+
+    // --- Clear state reset ---
+    const handleResetApp = () => {
+      const confirmed = confirm('Are you sure you want to clear MyPlan? This will delete all monthly budget records, all recorded transactions, and reset the app back to Rs. 0.00.');
+      if (confirmed) {
+        localStorage.removeItem('myplan_glass_budget');
+        localStorage.removeItem('myplan_glass_expenses');
+        
+        // Strict absolute zero reset
+        state.budget = 0.00;
+        state.expenses = [];
+        state.activeFilter = 'All';
+        saveState();
+
+        const buttons = DOM.categoryFilters.querySelectorAll('button');
+        buttons.forEach(b => {
+          if (b.dataset.filter === 'All') {
+            b.className = 'px-3 py-1.5 rounded-lg text-[10px] font-bold bg-white/15 text-white border border-white/10 transition-all btn-active-depress';
+          } else {
+            b.className = 'px-3 py-1.5 rounded-lg text-[10px] font-semibold bg-white/5 hover:bg-white/10 text-white/70 hover:text-white border border-white/5 transition-all btn-active-depress';
+          }
+        });
+
+        render();
+      }
+    };
+
+    // --- Event listener registrations ---
+    const registerListeners = () => {
+      DOM.resetAppBtn.addEventListener('click', handleResetApp);
+      DOM.updateBudgetBtn.addEventListener('click', handleUpdateBudget);
+      DOM.budgetInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleUpdateBudget();
+      });
+      DOM.expenseForm.addEventListener('submit', handleAddExpense);
+      DOM.categoryFilters.addEventListener('click', handleFilterChange);
+
+      // Clean inputs warning checks dynamically
+      DOM.expenseNote.addEventListener('input', () => {
+        if (DOM.expenseNote.value.trim()) {
+          DOM.noteError.classList.add('hidden');
+          DOM.expenseNote.classList.remove('border-rose-400');
+        }
+      });
+
+      DOM.expenseAmount.addEventListener('input', () => {
+        if (parseFloat(DOM.expenseAmount.value) > 0) {
+          DOM.amountError.classList.add('hidden');
+          DOM.expenseAmount.classList.remove('border-rose-400');
+        }
+      });
+
+      DOM.expenseCategory.addEventListener('change', () => {
+        if (DOM.expenseCategory.value) {
+          DOM.categoryError.classList.add('hidden');
+          DOM.expenseCategory.classList.remove('border-rose-400');
+        }
+      });
+    };
+
+    // --- Initial launch bootstrapper ---
+    const init = () => {
+      loadState();
+      registerListeners();
+      render();
+    };
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
