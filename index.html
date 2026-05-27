@@ -31,6 +31,49 @@
       --glass-bg-hover: rgba(255, 255, 255, 0.12);
       --glass-border: rgba(255, 255, 255, 0.12);
       --glass-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.25);
+
+      /* Theme 1: Ocean Blue (Default) */
+      --accent-primary: #3b82f6;
+      --accent-primary-hover: #2563eb;
+      --accent-glow: rgba(59, 130, 246, 0.35);
+      --logo-grad-start: #3b82f6;
+      --logo-grad-end: #6366f1;
+      --orb-1-color: rgba(59, 130, 246, 0.45);
+      --orb-2-color: rgba(99, 102, 241, 0.40);
+      --orb-3-color: rgba(244, 63, 94, 0.22);
+    }
+
+    body.theme-emerald {
+      --accent-primary: #10b981;
+      --accent-primary-hover: #059669;
+      --accent-glow: rgba(16, 185, 129, 0.35);
+      --logo-grad-start: #10b981;
+      --logo-grad-end: #14b8a6;
+      --orb-1-color: rgba(16, 185, 129, 0.45);
+      --orb-2-color: rgba(20, 184, 166, 0.40);
+      --orb-3-color: rgba(99, 102, 241, 0.22);
+    }
+
+    body.theme-orange {
+      --accent-primary: #f97316;
+      --accent-primary-hover: #ea580c;
+      --accent-glow: rgba(249, 115, 22, 0.35);
+      --logo-grad-start: #f97316;
+      --logo-grad-end: #fbbf24;
+      --orb-1-color: rgba(249, 115, 22, 0.45);
+      --orb-2-color: rgba(234, 88, 12, 0.40);
+      --orb-3-color: rgba(244, 63, 94, 0.22);
+    }
+
+    body.theme-purple {
+      --accent-primary: #a855f7;
+      --accent-primary-hover: #9333ea;
+      --accent-glow: rgba(168, 85, 247, 0.35);
+      --logo-grad-start: #a855f7;
+      --logo-grad-end: #4f46e5;
+      --orb-1-color: rgba(168, 85, 247, 0.45);
+      --orb-2-color: rgba(79, 70, 229, 0.40);
+      --orb-3-color: rgba(244, 63, 94, 0.22);
     }
 
     body {
@@ -70,8 +113,9 @@
       left: -10%;
       width: 55vw;
       height: 55vw;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.45) 0%, transparent 75%);
+      background: radial-gradient(circle, var(--orb-1-color) 0%, transparent 75%);
       animation-duration: 20s;
+      transition: background 0.8s ease;
     }
 
     /* Orb 2: Royal Blue Blue */
@@ -80,8 +124,9 @@
       right: -10%;
       width: 65vw;
       height: 65vw;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 75%);
+      background: radial-gradient(circle, var(--orb-2-color) 0%, transparent 75%);
       animation-duration: 28s;
+      transition: background 0.8s ease;
     }
 
     /* Orb 3: Accent Magenta */
@@ -90,8 +135,9 @@
       left: 45%;
       width: 50vw;
       height: 50vw;
-      background: radial-gradient(circle, rgba(244, 63, 94, 0.22) 0%, transparent 75%);
+      background: radial-gradient(circle, var(--orb-3-color) 0%, transparent 75%);
       animation-duration: 22s;
+      transition: background 0.8s ease;
     }
 
     @keyframes floatOrb {
@@ -182,6 +228,21 @@
       border-color: rgba(255, 255, 255, 0.22);
     }
     .btn-active-depress:active {
+      transform: scale(0.96);
+    }
+
+    /* Premium Dynamic Accent Color Button */
+    .btn-primary-accent {
+      background: var(--accent-primary);
+      box-shadow: 0 4px 14px var(--accent-glow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-primary-accent:hover {
+      background: var(--accent-primary-hover);
+      box-shadow: 0 6px 18px var(--accent-glow);
+      transform: translateY(-1.5px);
+    }
+    .btn-primary-accent:active {
       transform: scale(0.96);
     }
 
@@ -279,29 +340,52 @@
     <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       <!-- branding -->
       <div class="flex items-center space-x-3">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-indigo-500 flex items-center justify-center shadow-lg shadow-emerald-500/10 shrink-0">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 shadow-lg" style="background: linear-gradient(135deg, var(--logo-grad-start), var(--logo-grad-end)); box-shadow: 0 4px 15px var(--accent-glow); transition: all 0.5s ease;">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
         <div>
           <h1 class="text-xl font-bold tracking-tight text-white/95 leading-none">MyPlan</h1>
-          <p class="text-[9px] font-semibold text-white/30 uppercase tracking-widest mt-1">Frosted Glass Planner</p>
+          <span id="dynamic-date-subtitle" class="text-[10px] font-semibold text-emerald-400/90 tracking-widest uppercase mt-1.5 block">Loading Month...</span>
         </div>
       </div>
 
-      <!-- Quick Reset CTA -->
-      <button id="reset-app-btn" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-rose-400/80 hover:text-rose-400 bg-white/5 hover:bg-white/10 border border-white/5 transition-all btn-active-depress">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-        </svg>
-        <span>Reset Data</span>
-      </button>
+      <div class="flex items-center space-x-3.5">
+        <!-- Sleek Minimalist Theme Switcher Color Swatches -->
+        <div class="flex items-center space-x-2 border-r border-white/10 pr-3.5">
+          <button id="theme-btn-blue" onclick="setTheme('blue')" class="w-3.5 h-3.5 rounded-full bg-blue-500 border border-white/20 hover:scale-125 focus:outline-none transition-all duration-200" style="box-shadow: 0 0 4px rgba(59, 130, 246, 0.4);" title="Ocean Blue"></button>
+          <button id="theme-btn-emerald" onclick="setTheme('emerald')" class="w-3.5 h-3.5 rounded-full bg-emerald-500 border border-white/20 hover:scale-125 focus:outline-none transition-all duration-200" style="box-shadow: 0 0 4px rgba(16, 185, 129, 0.4);" title="Emerald Green"></button>
+          <button id="theme-btn-orange" onclick="setTheme('orange')" class="w-3.5 h-3.5 rounded-full bg-orange-500 border border-white/20 hover:scale-125 focus:outline-none transition-all duration-200" style="box-shadow: 0 0 4px rgba(249, 115, 22, 0.4);" title="Sunset Orange"></button>
+          <button id="theme-btn-purple" onclick="setTheme('purple')" class="w-3.5 h-3.5 rounded-full bg-purple-500 border border-white/20 hover:scale-125 focus:outline-none transition-all duration-200" style="box-shadow: 0 0 4px rgba(168, 85, 247, 0.4);" title="Dark Purple"></button>
+        </div>
+
+        <!-- Quick Reset CTA -->
+        <button id="reset-app-btn" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-rose-400/80 hover:text-rose-400 bg-white/5 hover:bg-white/10 border border-white/5 transition-all btn-active-depress">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+          </svg>
+          <span>Reset Data</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <!-- Main Workspace -->
   <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 md:py-8 space-y-6">
+
+    <!-- Premium Workspace Title & Dynamic Month Range Display -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 animate-slide-up">
+      <div>
+        <h2 class="text-2xl font-extrabold text-white/95 tracking-tight leading-none">Monthly Planner</h2>
+        <p id="dynamic-date-workspace" class="text-xs font-semibold text-white/35 mt-1.5 flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span class="tracking-wide">Loading Month Range...</span>
+        </p>
+      </div>
+    </div>
 
     <!-- Top Block: Set Budget & Progress Indicators -->
     <section class="glass-panel p-6 space-y-5 animate-slide-up">
@@ -318,7 +402,7 @@
             <input type="number" id="budget-input" min="0" step="1" placeholder="0.00" class="block w-full pl-12 pr-28 py-3.5 glass-input text-base font-bold input-focus-glow" />
             
             <div class="absolute inset-y-0 right-0 pr-1.5 flex items-center">
-              <button id="update-budget-btn" class="px-3.5 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs rounded-xl shadow-lg shadow-emerald-500/15 transition-all btn-active-depress">
+              <button id="update-budget-btn" class="px-3.5 py-2 text-white font-semibold text-xs rounded-xl transition-all btn-primary-accent">
                 Update
               </button>
             </div>
@@ -432,7 +516,7 @@
           </div>
 
           <!-- Add Expense Button -->
-          <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs rounded-xl shadow-lg shadow-emerald-500/10 transition-all btn-glass btn-active-depress flex items-center justify-center space-x-1.5">
+          <button type="submit" class="w-full text-white font-semibold text-xs rounded-xl transition-all btn-primary-accent flex items-center justify-center space-x-1.5">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
             </svg>
@@ -503,7 +587,8 @@
     let state = {
       budget: 0.00,
       expenses: [],
-      activeFilter: 'All'
+      activeFilter: 'All',
+      theme: 'blue'
     };
 
     // --- Element bindings Cache ---
@@ -567,6 +652,11 @@
     const loadState = () => {
       const cachedBudget = localStorage.getItem('myplan_glass_budget');
       const cachedExpenses = localStorage.getItem('myplan_glass_expenses');
+      const cachedTheme = localStorage.getItem('myplan_active_theme');
+
+      // Initialize Theme Class Settings
+      state.theme = cachedTheme || 'blue';
+      setTheme(state.theme, false);
 
       if (cachedBudget === null && cachedExpenses === null) {
         // STRICT ABSOLUTE-ZERO START SEQUENCE
@@ -582,6 +672,48 @@
     const saveState = () => {
       localStorage.setItem('myplan_glass_budget', state.budget.toString());
       localStorage.setItem('myplan_glass_expenses', JSON.stringify(state.expenses));
+    };
+
+    // --- Dynamic Theme Customization Engine ---
+    window.setTheme = (themeName, shouldSave = true) => {
+      state.theme = themeName;
+      
+      // Reset and inject corresponding theme class configurations
+      document.body.className = '';
+      document.body.classList.add(`theme-${themeName}`);
+      
+      // Update Swatches highlight borders
+      updateActiveThemeSwatch(themeName);
+      
+      if (shouldSave) {
+        localStorage.setItem('myplan_active_theme', themeName);
+      }
+      
+      // Redraw DOM dependencies instantly
+      if (typeof render === 'function') {
+        render();
+      }
+    };
+
+    // --- Active Swatch Highlight Controller ---
+    const updateActiveThemeSwatch = (activeTheme) => {
+      const themeColors = {
+        blue: 'blue-500',
+        emerald: 'emerald-500',
+        orange: 'orange-500',
+        purple: 'purple-500'
+      };
+      
+      Object.keys(themeColors).forEach(t => {
+        const btn = document.getElementById(`theme-btn-${t}`);
+        if (btn) {
+          if (t === activeTheme) {
+            btn.className = `w-3.5 h-3.5 rounded-full bg-${themeColors[t]} border-2 border-white scale-125 focus:outline-none transition-all duration-200 shadow-[0_0_8px_rgba(255,255,255,0.4)]`;
+          } else {
+            btn.className = `w-3.5 h-3.5 rounded-full bg-${themeColors[t]} border border-white/20 hover:scale-125 focus:outline-none transition-all duration-200`;
+          }
+        }
+      });
     };
 
     // --- UI Render orchestrator ---
@@ -600,21 +732,33 @@
       DOM.budgetProgressBar.style.width = `${exhaustionPercent}%`;
 
       if (state.budget === 0) {
-        DOM.budgetProgressBar.className = 'h-full w-0 progress-bar-fill rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(52,211,153,0.35)]';
+        DOM.budgetProgressBar.className = 'h-full w-0 progress-bar-fill rounded-full';
+        DOM.budgetProgressBar.style.backgroundColor = 'var(--accent-primary)';
+        DOM.budgetProgressBar.style.boxShadow = '0 0 10px var(--accent-glow)';
         DOM.budgetHelperText.textContent = 'Enter your monthly budget to unlock tracker metrics.';
+        DOM.budgetHelperText.style.color = '';
         DOM.budgetHelperText.className = 'text-[11px] text-white/30 italic';
       } else if (exhaustionPercent >= 100) {
         DOM.budgetProgressBar.className = 'h-full w-0 progress-bar-fill rounded-full bg-rose-500 shadow-[0_0_10px_rgba(248,113,113,0.45)]';
+        DOM.budgetProgressBar.style.backgroundColor = '';
+        DOM.budgetProgressBar.style.boxShadow = '';
         DOM.budgetHelperText.textContent = 'Alert: Budget limits fully exhausted! Reduce spending.';
+        DOM.budgetHelperText.style.color = '';
         DOM.budgetHelperText.className = 'text-[11px] text-rose-400 font-semibold italic';
       } else if (exhaustionPercent >= 75) {
         DOM.budgetProgressBar.className = 'h-full w-0 progress-bar-fill rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.35)]';
+        DOM.budgetProgressBar.style.backgroundColor = '';
+        DOM.budgetProgressBar.style.boxShadow = '';
         DOM.budgetHelperText.textContent = 'Warning: Over 75% of your allocated budget has been spent.';
+        DOM.budgetHelperText.style.color = '';
         DOM.budgetHelperText.className = 'text-[11px] text-amber-400 font-medium italic';
       } else {
-        DOM.budgetProgressBar.className = 'h-full w-0 progress-bar-fill rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(52,211,153,0.35)]';
+        DOM.budgetProgressBar.className = 'h-full w-0 progress-bar-fill rounded-full';
+        DOM.budgetProgressBar.style.backgroundColor = 'var(--accent-primary)';
+        DOM.budgetProgressBar.style.boxShadow = '0 0 10px var(--accent-glow)';
         DOM.budgetHelperText.textContent = 'All good! Current spending limits are perfectly healthy.';
-        DOM.budgetHelperText.className = 'text-[11px] text-emerald-400/80 italic';
+        DOM.budgetHelperText.style.color = 'var(--accent-primary)';
+        DOM.budgetHelperText.className = 'text-[11px] font-semibold italic';
       }
 
       // 3. Render Card Metrics (Formatted strictly as Rs. 0.00 baseline)
@@ -625,11 +769,21 @@
       // Color text carefully to be highly readable on glass
       if (remainingBalance < 0) {
         DOM.cardRemainingBalance.className = 'text-xl font-extrabold text-rose-400 mt-1.5 truncate glow-remaining-over transition-colors duration-300';
+        DOM.cardRemainingBalance.style.color = '';
+        DOM.cardRemainingBalance.style.textShadow = '';
         DOM.remainingBalanceIconContainer.className = 'w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center border border-rose-500/10 shrink-0 transition-colors duration-300';
+        DOM.remainingBalanceIconContainer.style.backgroundColor = '';
+        DOM.remainingBalanceIconContainer.style.color = '';
+        DOM.remainingBalanceIconContainer.style.borderColor = '';
         DOM.overBudgetDot.classList.remove('hidden');
       } else {
-        DOM.cardRemainingBalance.className = 'text-xl font-extrabold text-emerald-400 mt-1.5 truncate glow-remaining-healthy transition-colors duration-300';
-        DOM.remainingBalanceIconContainer.className = 'w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/10 shrink-0 transition-colors duration-300';
+        DOM.cardRemainingBalance.className = 'text-xl font-extrabold mt-1.5 truncate transition-colors duration-300';
+        DOM.cardRemainingBalance.style.color = 'var(--accent-primary)';
+        DOM.cardRemainingBalance.style.textShadow = '0 0 14px var(--accent-glow)';
+        DOM.remainingBalanceIconContainer.className = 'w-12 h-12 rounded-xl flex items-center justify-center border shrink-0 transition-colors duration-300';
+        DOM.remainingBalanceIconContainer.style.backgroundColor = 'var(--accent-glow)';
+        DOM.remainingBalanceIconContainer.style.color = 'var(--accent-primary)';
+        DOM.remainingBalanceIconContainer.style.borderColor = 'rgba(255, 255, 255, 0.08)';
         DOM.overBudgetDot.classList.add('hidden');
       }
 
@@ -871,9 +1025,40 @@
       });
     };
 
+    // --- Dynamic Date Controller ---
+    const updateDynamicDate = () => {
+      const now = new Date();
+      const monthName = now.toLocaleString('en-US', { month: 'long' });
+      const monthShort = now.toLocaleString('en-US', { month: 'short' });
+      const year = now.getFullYear();
+      
+      // Calculate first and last day of current month
+      const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+      
+      const titleString = `Budget for ${monthName} ${year}`;
+      const rangeString = `${monthShort} 01 - ${monthShort} ${lastDay}, ${year}`;
+      
+      const dateSubtitle = document.getElementById('dynamic-date-subtitle');
+      const dateWorkspace = document.getElementById('dynamic-date-workspace');
+      
+      if (dateSubtitle) {
+        dateSubtitle.textContent = titleString;
+      }
+      if (dateWorkspace) {
+        // Find text node element inside paragraph
+        const textSpan = dateWorkspace.querySelector('span');
+        if (textSpan) {
+          textSpan.textContent = rangeString;
+        } else {
+          dateWorkspace.textContent = rangeString;
+        }
+      }
+    };
+
     // --- Initial launch bootstrapper ---
     const init = () => {
       loadState();
+      updateDynamicDate();
       registerListeners();
       render();
     };
